@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b090c"><title>Bloodbound Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#0b090c;--line:#38232f;--text:#f4edf1;--muted:#a998a5;--red:#d73b54;--pink:#ff7388}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#38101d 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,sans-serif}main{max-width:1150px;margin:auto;padding:24px 16px 50px}
+header{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{display:flex;gap:12px;align-items:center}.sigil{width:44px;height:44px;border:1px solid var(--red);border-radius:12px;display:grid;place-items:center;color:var(--pink);font-size:24px;background:#250e17}.eyebrow{color:var(--pink);text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:800}.brand h1{margin:0;font-size:22px}.pill{border:1px solid #69404e;border-radius:999px;padding:6px 11px;color:#f6bdc7;font-size:11px;background:#24121a}
+.intro{margin:24px 0 18px}.intro h2{font-size:27px;margin:3px 0}.muted,.intro p{color:var(--muted)}.intro p{margin:4px 0}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,#1a141a,#110e12);border:1px solid var(--line);border-radius:15px;padding:16px;min-width:0}.metric-head{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.metric{font-size:27px;font-weight:760;margin:10px 0 2px;overflow-wrap:anywhere}.sub{font-size:11px;color:var(--muted)}h2.section{font-size:18px;margin:26px 0 12px}
+.platforms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.platform-title{display:flex;align-items:center;gap:10px}.logo{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#291721;border:1px solid #4a2735;font-weight:800}.platform-title h3{margin:0;font-size:15px}.platform-title p{margin:2px 0;color:var(--muted);font-size:11px}
+label{display:block;color:#d9cbd4;font-size:12px;margin:13px 0 5px}input,textarea{width:100%;background:#0e0b0f;color:var(--text);border:1px solid #51303e;border-radius:9px;padding:11px;font:inherit;font-size:13px}button{cursor:pointer;border:1px solid #6d3445;background:#2a111b;color:#ffdce2;border-radius:9px;padding:10px 12px;font-weight:650;font-size:12px}button:hover{background:#421724}.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.status{font-size:11px;color:#f1c56c;display:block;margin-top:10px;overflow-wrap:anywhere}.status.ok{color:#a8e3ba}.status.err{color:#ff9aa7}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.list{display:grid;gap:10px}.rowstat{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #30212b;padding-bottom:9px;font-size:12px}.rowstat:last-child{border:0;padding:0}.notice{border:1px solid #59442b;background:#211a11;color:#e6d2a7;border-radius:12px;padding:13px;font-size:12px;margin-top:16px}.foot{color:#7f6d7a;font-size:11px;text-align:center;margin-top:26px}.link{color:#ff9cac;overflow-wrap:anywhere}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.intro h2{font-size:23px}}@media(max-width:430px){.platforms{grid-template-columns:1fr}.card{padding:13px}.metric{font-size:24px}}
+</style></head><body><main>
+<header><div class="brand"><div class="sigil">♜</div><div><div class="eyebrow">Creator command center</div><h1>BLOODBOUND <span style="color:var(--red)">/</span> STUDIO</h1></div></div><span class="pill">BÊTA · PROFILS PRÉCONFIGURÉS</span></header>
+<section class="intro"><div class="eyebrow">Vue d'ensemble</div><h2>Ton royaume créatif.</h2><p>Une interface unique pour tes mods et tes contenus.</p></section>
+<div class="grid">
+<div class="card"><div class="metric-head">Téléchargements Modrinth <span>⇩</span></div><div class="metric" id="mrDownloads">…</div><div class="sub">Projets publics de Shizuyora</div></div>
+<div class="card"><div class="metric-head">Vues pages Modrinth <span>◉</span></div><div class="metric" id="mrViews">…</div><div class="sub">Projets publics de Shizuyora</div></div>
+<div class="card"><div class="metric-head">CurseForge <span>✦</span></div><div class="metric" id="cfTotal">À configurer</div><div class="sub">API publique non accessible sans clé</div></div>
+<div class="card"><div class="metric-head">YouTube / TikTok <span>▷</span></div><div class="metric" id="socialTotal">À configurer</div><div class="sub">API/autorisation nécessaire pour statistiques complètes</div></div>
+</div>
+<h2 class="section">Tes profils</h2><div class="platforms">
+<div class="card"><div class="platform-title"><div class="logo">M</div><div><h3>Modrinth · Shizuyora</h3><p>Liste des projets et stats publiques</p></div></div><p><a class="link" href="https://modrinth.com/user/Shizuyora" target="_blank" rel="noreferrer">Ouvrir le profil ↗</a></p><div class="btnrow"><button id="loadMr">Actualiser Modrinth</button><button id="save">Mémoriser</button></div><span class="status" id="mrStatus">Connexion à l'API publique…</span></div>
+<div class="card"><div class="platform-title"><div class="logo">C</div><div><h3>CurseForge · The Queen of the Blood</h3><p>Projet identifié</p></div></div><p><a class="link" href="https://www.curseforge.com/minecraft/mc-mods/queenoftheblood" target="_blank" rel="noreferrer">Ouvrir le mod ↗</a></p><span class="status">Les compteurs CurseForge exigent une clé API; ils ne sont pas inventés ni simulés.</span></div>
+<div class="card"><div class="platform-title"><div class="logo">▶</div><div><h3>YouTube · Shizuyora</h3><p>Chaîne publique</p></div></div><p><a class="link" href="https://youtube.com/@shizuyora" target="_blank" rel="noreferrer">Ouvrir la chaîne ↗</a></p><span class="status">Les revenus privés demandent une autorisation OAuth; les statistiques publiques API demandent une configuration développeur.</span></div>
+<div class="card"><div class="platform-title"><div class="logo">♪</div><div><h3>TikTok · @shizuyora_</h3><p>Profil public</p></div></div><p><a class="link" href="https://www.tiktok.com/@shizuyora_" target="_blank" rel="noreferrer">Ouvrir le profil ↗</a></p><span class="status">Les stats détaillées nécessitent une application TikTok approuvée et une autorisation.</span></div>
+</div>
+<h2 class="section">Projets Modrinth détectés</h2><div class="card"><p class="muted" style="font-size:12px;margin-top:0">Cette page tente de lire la liste des projets du profil Shizuyora puis leurs compteurs publics. Les résultats dépendent de la disponibilité de l'API depuis ton navigateur.</p><div class="list" id="mrProjects"><span class="muted">Chargement…</span></div><div class="two"><div class="rowstat"><span>Projets détectés</span><strong id="mrCount">—</strong></div><div class="rowstat"><span>Dernière actualisation</span><strong id="mrUpdated">—</strong></div></div></div>
+<div class="notice"><strong>État honnête du projet :</strong> la connexion publique Modrinth est codée dans cette version. Elle se met à jour quand tu ouvres la page ou appuies sur Actualiser, mais n'est pas un service d'arrière-plan 24 h/24. Pour une actualisation planifiée gratuite et les trois autres plateformes, il faudra déployer un backend/serverless et configurer les API officielles. Aucune clé secrète ni aucun mot de passe n'est demandé ici.</div>
+<div class="foot">BLOODBOUND STUDIO · Bêta 0.2 · Obsidienne & sang</div>
+</main>
+<script>
+const $=id=>document.getElementById(id),fmt=n=>Number(n||0).toLocaleString('fr-FR');
+function status(msg,kind=''){ $('mrStatus').textContent=msg;$('mrStatus').className='status '+kind; }
+async function loadModrinth(){
+ $('mrProjects').innerHTML='<span class="muted">Chargement des projets…</span>';status('Récupération du profil public…');
+ try{
+  let r=await fetch('https://api.modrinth.com/v2/user/Shizuyora/projects');
+  if(!r.ok) throw new Error('API projets : HTTP '+r.status);
+  let projects=await r.json();
+  if(!Array.isArray(projects))throw new Error('Réponse API inattendue');
+  projects=projects.filter(p=>p.status==='approved'||p.status==='unlisted');
+  $('mrProjects').innerHTML='';
+  let totalDownloads=0,totalViews=0;
+  projects.forEach(p=>{
+   totalDownloads+=Number(p.downloads||0);totalViews+=Number(p.views||0);
+   const row=document.createElement('div');row.className='rowstat';
+   const left=document.createElement('div');const title=document.createElement('strong');title.textContent=p.title||p.slug;
+   const link=document.createElement('a');link.className='link';link.href=p.project_type?`https://modrinth.com/${p.project_type}/${p.slug}`:`https://modrinth.com/project/${p.slug}`;link.target='_blank';link.rel='noreferrer';link.textContent='Ouvrir ↗';
+   left.append(title,document.createElement('br'),link);
+   const stats=document.createElement('span');stats.textContent=`${fmt(p.downloads)} téléchargements · ${fmt(p.views)} vues`;
+   row.append(left,stats);$('mrProjects').appendChild(row);
+  });
+  if(!projects.length)$('mrProjects').innerHTML='<span class="muted">Aucun projet public trouvé sur ce compte, ou profil sans projet visible.</span>';
+  $('mrDownloads').textContent=fmt(totalDownloads);$('mrViews').textContent=fmt(totalViews);$('mrCount').textContent=fmt(projects.length);$('mrUpdated').textContent=new Date().toLocaleString('fr-FR');
+  status(`Actualisé : ${projects.length} projet(s) public(s) détecté(s).`,'ok');
+ }catch(e){
+  $('mrProjects').innerHTML='<span class="muted">Impossible de lire l’API depuis cette ouverture. Essaie sur un hébergement HTTPS (GitHub Pages / Cloudflare Pages) ou utilise Actualiser.</span>';
+  $('mrDownloads').textContent='—';$('mrViews').textContent='—';$('mrCount').textContent='—';status('Connexion Modrinth impossible : '+e.message,'err');
+ }
+}
+$('loadMr').addEventListener('click',loadModrinth);
+$('save').addEventListener('click',()=>{try{localStorage.setItem('bloodbound_profile','Shizuyora');status('Préférence mémorisée sur cet appareil.','ok')}catch{status('Sauvegarde locale indisponible.','err')}});
+loadModrinth();
+</script></body></html>
